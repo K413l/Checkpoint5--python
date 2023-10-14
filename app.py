@@ -20,6 +20,7 @@ def ler_recurso_por_id(id):
     cursor.execute("SELECT * FROM tabela WHERE id = :id", {"id": id})
     result = cursor.fetchone()
     cursor.close()
+    recursos=[]
     if result:
         recursos.append({"livro_id": result[0], "nome_livro": result[1], "float_preco": result[2],"float_preco": result[3], "data_lancamento": result[4].strftime('%d-%m-%Y')})
     else:
