@@ -9,7 +9,7 @@ connection = oracledb.connect(user = 'RM550620',password = '130400',dsn = 'oracl
 def criar_recurso():
     data = request.get_json()
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO livros_checkpoint (livro_id, nome_livro, float_preco, data_lancamento) VALUES (:livro_id, :nome_livro, :float_preco, TO_DATE(:data_lancamento, 'DD-MM-YYYY'))", data)
+    cursor.execute("INSERT INTO livros_checkpoint (livro_id, nome_livro, float_preco, autor, data_lancamento) VALUES (:livro_id, :nome_livro, :float_preco, autor,TO_DATE(:data_lancamento, 'DD-MM-YYYY'))", data)
     cursor.close()
     connection.commit()
     return jsonify({"message": "Recurso criado com sucesso"})
