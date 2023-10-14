@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-import cx_Oracle
+import oracledb
 
-app = Flask(__name)
+app = Flask(__name__)
 
-connection = cx_Oracle.connect(RM550620,130400,oracle.fiap.com.br:1521/orcl)
+connection = oracledb.connect(user = 'RM550620',password = '130400',dsn = 'oracle.fiap.com.br/orcl') 
 
 @app.route('/recurso', methods=['POST'])
 def criar_recurso():
@@ -37,4 +37,4 @@ def listar_recursos():
     return jsonify(recursos)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000,host='localhost',debug=True)
